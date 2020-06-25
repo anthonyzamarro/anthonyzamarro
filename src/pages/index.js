@@ -10,6 +10,7 @@ const IndexPage = () => (
     <SEO title="Home" />
     <h1>Tonyz's Blog</h1>
     <p>On this blog I write mostly about tech related topics to better understand them.</p>
+    <img src="https://source.unsplash.com/random/400x200"/>
     <ul>
       <li><Link to="/2020/06-24--ssh">SSH</Link></li>
       <li><Link to="/2020/06-25--cookies-sessions-local-storage">Cookies vs. Sessions vs. Local Storage</Link></li>
