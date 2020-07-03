@@ -1,6 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<h1 align="center">
-  Tonyz's Blog
-</h1>
 
-<small>Built with  <a href="https://www.gatsbyjs.org">Gatsby</a></small>
+# Tonyz's Blog
+
+A place for me to better understand tech related stuff. Occasionally, write about other topics that interest me.
+
+Built with  [Gatsby](https://www.gatsbyjs.org)
