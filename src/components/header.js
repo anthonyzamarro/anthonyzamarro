@@ -32,7 +32,7 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
-      <Nav />
+      <Nav navTitles={'home'}/>
     </div>
   </header>
 )
