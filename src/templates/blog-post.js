@@ -5,9 +5,8 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
 
 export default function BlogPost({ data }) {
-  const post = data.mdx
-  console.log(post);
-  const shortcodes = { Link }
+  const post = data.mdx,
+        shortcodes = { Link }
   return (
     <Layout>
       <div>
