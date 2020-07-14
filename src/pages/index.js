@@ -12,7 +12,6 @@ export default function IndexPage({ data }) {
       <SEO title="Home" />
       <h1>Tonyz's Blog</h1>
       <p>On this blog I write mostly about tech related topics to better understand them.</p>
-      <img src="https://source.unsplash.com/random/400x200" alt="Something"/>
       <h4>{data.allMdx.totalCount} Posts</h4>
         {data.allMdx.edges.map(({ node }) => (
           <div key={node.id}>

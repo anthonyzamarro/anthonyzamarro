@@ -16,6 +16,11 @@ export default function BlogPost({ data }) {
         <MDXProvider components={shortcodes}>
 	        <MDXRenderer>{post.body}</MDXRenderer>
 	    </MDXProvider>
+      <div>Related Tags</div>
+      <ul>
+          {console.log(post.frontmatter.tags)}
+        <li>{post.frontmatter.tags.join(', ')}</li>
+      </ul>
       </div>
     </Layout>
   )
@@ -26,6 +31,7 @@ export const query = graphql`
 	    mdx(fields: { slug: { eq: $slug } }) {
 	      frontmatter {
 	        title
+          tags
 	      }
 	      body
         excerpt
