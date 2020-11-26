@@ -19,15 +19,72 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
    		name: `slug`,
    		value: `/blog${slug}`
    	})
+
+    createNodeField({
+      node,
+      name: `tagList`,
+      value: node.frontmatter.tags
+    })
   }
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const tagTemplate = path.resolve("src/templates/tags.js")
   // **Note:** The graphql function call returns a Promise
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
-   const resultTags = await graphql(`
+  //  const resultTags = await graphql(`
+  //   {
+  //     postsRemark: allMdx(
+  //       sort: { order: DESC, fields: [frontmatter___date] }
+  //       limit: 2000
+  //     ) {
+  //       edges {
+  //         node {
+  //           fields {
+  //             slug
+  //           }
+  //           frontmatter {
+  //             tags
+  //           }
+  //         }
+  //       }
+  //     }
+  //     tagsGroup: allMdx(limit: 2000) {
+  //       group(field: frontmatter___tags) {
+  //         fieldValue
+  //       }
+  //     }
+  //   }
+  // `)
+  // if (resultTags.errors) {
+  //   reporter.panicOnBuild(`Error while running GraphQL query.`)
+  //   return
+  // }
+
+  // const result = await graphql(`
+  //   query {
+  //     allMdx {
+  //       edges {
+  //         node {
+  //           id
+  //           fields {
+  //             slug
+  //           }
+  //           frontmatter {
+  //             tags
+  //           }
+  //         }
+  //       }
+  //       tagsGroup: allMdx(limit: 2000) {
+  //         group(field: frontmatter___tags) {
+  //           fieldValue
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+  const result = await graphql(`
     {
       postsRemark: allMdx(
         sort: { order: DESC, fields: [frontmatter___date] }
@@ -35,6 +92,7 @@ exports.createPages = async ({ graphql, actions }) => {
       ) {
         edges {
           node {
+            id
             fields {
               slug
             }
@@ -51,13 +109,14 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  if (resultTags.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return
-  }
+
+    if (result.errors) {
+      reporter.panicOnBuild(`Error while running GraphQL query.`)
+      return
+    }
 
   // Extract tag data from query
-  const tags = resultTags.data.tagsGroup.group;
+  const tags = result.data.tagsGroup.group;
   // Make tag pages
   tags.forEach(tag => {
       createPage({
@@ -69,24 +128,9 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
 
+  const posts = result.data.postsRemark.edges;
 
-
-  const result = await graphql(`
-    query {
-      allMdx {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  result.data.allMdx.edges.forEach(({ node }) => {
+  posts.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve(`./src/templates/blog-post.js`),

@@ -2,11 +2,11 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
+import TagsSidebar from "../components/tagsSidebar"
 // import Image from "../components/image"
 import SEO from "../components/seo"
 
 export default function IndexPage({ data }) {
-  console.log(data)
   return (
     <Layout>
       <SEO title="Home" />
@@ -28,8 +28,10 @@ export default function IndexPage({ data }) {
             </Link>
           </div>
         ))}
-
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+        <TagsSidebar />
+      <div>
+        <span>View all <Link to="/tags/">tags</Link></span>
+      </div>
     </Layout>
   )
 }
