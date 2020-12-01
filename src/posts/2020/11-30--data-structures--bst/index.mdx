@@ -21,13 +21,58 @@ A common place where we see a tree data structure is the file sytem on your comp
 
 ## Runtimes
 
-As stated, if we have a balanced binary search tree then our runtimes are O(log n).
+As stated, if we have a balanced binary search tree then our runtimes are O(log n) in the average case and O(n) in the worst case.
 
-operation	balanced	unbalanced
-search		O(log n)	O(n)
-insert		O(log n)	O(n)
-min		O(log n)	O(n)
-max		O(log n)	O(n)
-traversal	O(log n)	O(n)
-delete		O(log n)	O(n)
+operation \| |\| average |\| worst
+--- | --- | ---
+search  	| O(log n) |	O(n) 
+insert          | O(log n) |    O(n) 
+traverse	| O(log n) |	O(n)
+delete		| O(log n) |	O(n)
+
+## Implementation
+```
+class Node {
+	this.data = data;
+	this.left = null;
+	this.right = null
+}
+
+BinarySearchTree = () => {
+	this.root = null;
+
+	insert = () => {
+
+	}
+	
+	delete = () => {
+
+	}
+
+	search = (key, node) => {
+		if(!node || node.key === key) return key;
+	}
+
+	traverse = () => {
+
+	}
+
+	isBinarySearch = () => {
+
+	}
+
+	isBalanced = () => {
+
+	}
+	
+	minHeight = () => {
+
+	}
+
+	maxHeight = () => {
+
+	}
+}
+```
+
 
