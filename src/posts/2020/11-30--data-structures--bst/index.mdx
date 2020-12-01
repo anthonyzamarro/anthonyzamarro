@@ -1,0 +1,33 @@
+---
+title: Data Structures - Binary Search Trees
+date: 2020-11-30
+tags: ['data structures', 'trees', 'binary search trees']
+---
+
+
+## Overview
+
+Binary search trees are a linked data structure that consist of having a root node along with one or two child nodes. They are usually implemented using recursion and this can be powerful because using recursion can give us runtimes of O(log n)
+ if we have a balanced tree. 
+
+Some key features of binary search trees:
+- data in a tree is called a node
+- a tree always has a root node and at most two child nodes
+- children of nodes are ordered from least to greatest as in a node's left child will be less than its parent node and a node's right child will be greater than its parent node
+
+## Applications
+
+A common place where we see a tree data structure is the file sytem on your computer. This gives us a good visual about what a tree looks like.
+
+## Runtimes
+
+As stated, if we have a balanced binary search tree then our runtimes are O(log n).
+
+operation	balanced	unbalanced
+search		O(log n)	O(n)
+insert		O(log n)	O(n)
+min		O(log n)	O(n)
+max		O(log n)	O(n)
+traversal	O(log n)	O(n)
+delete		O(log n)	O(n)
+
