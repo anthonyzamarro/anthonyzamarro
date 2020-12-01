@@ -32,44 +32,65 @@ delete		| O(log n) |	O(n)
 
 ## Implementation
 ```
-class Node {
+let Node = (data) => {
 	this.data = data;
 	this.left = null;
 	this.right = null
 }
 
-BinarySearchTree = () => {
+let BinarySearchTree = () => {
 	this.root = null;
 
-	insert = () => {
-
+	this.insert = (key, value) => {
+		if(!this.root) {
+			this.root = new Node(key, value);
+		} else if (key == this.root.key) {
+			this.root.value = value;
+		} else if (key < this.root.key) {
+			this.insert(this.root.left, value);
+		} else {
+			this.insert(this.root.right, value);
+		}
 	}
 	
-	delete = () => {
+	this.delete = () => {
 
 	}
 
-	search = (key, node) => {
+	this.search = (key, node) => {
 		if(!node || node.key === key) return key;
+		
+		if(key < node.key) {
+			return this.search(key, node.left);
+		}
+		if(key > node.key) {
+			return this.search(key, node.right);
+		}
 	}
 
-	traverse = () => {
+	// in-order traversal is best as it always results in a sorted list of nodes
+	this.traverse = (node) => {
+		if (node === null) return;
+
+		let left = this.traverse(node.left);
+		console.log(left);
+		let right = this.traverse(node.right);
+		console.log(right);
+	}
+
+	this.isBinarySearch = () => {
 
 	}
 
-	isBinarySearch = () => {
-
-	}
-
-	isBalanced = () => {
+	this.isBalanced = () => {
 
 	}
 	
-	minHeight = () => {
+	this.minHeight = () => {
 
 	}
 
-	maxHeight = () => {
+	this.maxHeight = () => {
 
 	}
 }
