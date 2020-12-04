@@ -1,0 +1,51 @@
+---
+title: Missing Semester - Lesson Three - Vim
+date: 2020-12-03
+tags: ["missing semester", "vim"]
+---
+
+In the third lesson in the [missing semester](https://missing.csail.mit.edu/) series, we learn vim. Vim is a text editor that's based entirely in the command line. The point is to minimize as much typing as possible and not use the cursor. I have to say, so far this has been my favorite lesson not just because I really enjoyed the teacher and the lesson itself but also because I've found vim to be frustrating to learn at first but really productive and fun the better I've gotten.
+
+At first, vim is a real painm especially coming from text editors that give you a lot out of the box. But I soon saw the advantage of not relying on the mouse and actually thinking about more efficient ways of getting my work done through a text based editor. I've also liked having the control to basically start from scratch and install plugins as I see fit rather than have things out of the box. I will still go back and use a different editor if I'm at work and I need to quickly get something done, but I'm finding myself using vim for almost all of my tasks and my goal is to use it entirely at some point.
+
+### Challenges
+
+1. Complete `vimtutor`.
+
+	`vimtutor` is the beginner guide to vim. I found it really useful. There are seven lessons in total each with sub-lessons. They are pretty straight forward, so what I will do is give a summary of each lesson with the commands you learn. This can act as a sort of "cheat sheet" as well for when I need to recall how to do something.
+	Lesson 1.1 - Moving the Cursor
+	---
+	move up | j
+	move down | k	
+	move left | h
+	move right | l
+
+The point of using these keys and not using the arrow keys is that these are closer to other commands you will use, so there will be less movement in your wrists and fingers for reaching them.
+
+	Lesson 1.2 - Exiting Vim
+	---
+	1. go back to normal mode | ESC
+	2. save your changes | :w
+	3. exit vim | :q
+	4. (optional) chain the save and quit command | :wq
+
+	Lesson 1.3 - Deletion
+	---
+	1. move cursor over the character to be deleted | use the movement keys above
+	2. delete the character | x
+
+	Lesson 1.4 - Insertion
+	---
+	1. move the cursor where you want to insert text | movement keys above
+	2. enter insert mode | i 
+		- this is one of vim's modes. Some others being normal and visual.
+	3. type what you want and then go back to normal mode | ESC
+
+	Lesson 1.5 - Appending
+	---
+	1. go to the line that needs the character change. You can be anywhere on the line | A (shift + a)
+	2. the cursor will be brought to the end of the line and you will be in insert mode. Make your changes then exit insert mode.
+
+	Lesson 1.6 - Editing a File
+	---
+	Basically, test yourself by creating a file and editing it using vim and the commands above.	
