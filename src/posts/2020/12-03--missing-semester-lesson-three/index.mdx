@@ -6,13 +6,20 @@ tags: ["missing semester", "vim"]
 
 In the third lesson in the [missing semester](https://missing.csail.mit.edu/) series, we learn vim. Vim is a text editor that's based entirely in the command line. The point is to minimize as much typing as possible and not use the cursor. I have to say, so far this has been my favorite lesson not just because I really enjoyed the teacher and the lesson itself but also because I've found vim to be frustrating to learn at first but really productive and fun the better I've gotten.
 
-At first, vim is a real painm especially coming from text editors that give you a lot out of the box. But I soon saw the advantage of not relying on the mouse and actually thinking about more efficient ways of getting my work done through a text based editor. I've also liked having the control to basically start from scratch and install plugins as I see fit rather than have things out of the box. I will still go back and use a different editor if I'm at work and I need to quickly get something done, but I'm finding myself using vim for almost all of my tasks and my goal is to use it entirely at some point.
+At first, vim is a real pain especially coming from editors that give you a lot out of the box. But I soon saw the advantage of not relying on the mouse and actually thinking about more efficient ways of getting my work done through a text based editor. I've also liked having the control to basically start from scratch and install plugins as I see fit rather than have things out of the box. I will still go back and use a different editor if I'm at work and I need to quickly get something done, but I'm finding myself using vim for almost all of my tasks and my goal is to use it entirely at some point.
 
 ### Challenges
 
 1. Complete `vimtutor`.
 
 	`vimtutor` is the beginner guide to vim. I found it really useful. There are seven lessons in total each with sub-lessons. They are pretty straight forward, so what I will do is give a summary of each lesson with the commands you learn. This can act as a sort of "cheat sheet" as well for when I need to recall how to do something.
+
+	### Basic Commands
+	Command | Description
+	---	| ---
+	:w	| save changes to the fil
+	:q	| exit file
+	:help + command | comprehensive on-line help system for vim
 
 	### Cusor Movements
 	Command | Description
@@ -26,8 +33,25 @@ At first, vim is a real painm especially coming from text editors that give you 
 	e	| go to end of next word
 	w	| go to start of next word
 	b	| go back to the start of the previous word
-	
-	### Appending, Undoing
+	2w	| go forward by two words
+	2b	| go backward by two words
+	CTRL+G	| see which line you are on in the file
+	n+G	| type file line number and then G to jump to that line
+	gg	| jumo to top of file
+	G	| jump to bottom of file	
+	o	| enter insert mode on a new line below current line
+	O	| enter insert mode on a new line above current line
+
+	### Search, Pattern Match
+	Command | Description
+	---	| ---
+	:/pattern | seach for a phrase in the file and go there. jump to matches by pressing n. jump to matches backwards by pressing ?
+	%	| find matching ), ], or }
+	:s/old/new/g | substitute 'old' with 'new' phrase. the g flag substitutes globally in the file
+	:#,#s/old/new/g | change every occurance of character between two lines. #,# are line numbers of the range
+	:%s/old/new/gc | find every occurance of character in whole file. the c flag will show a prompt whether or not to subtitute the character
+
+	### Appending, Undoing, Changing
 	Command | Description
 	---	| ---
 	a	| go to end of current word and enter insert mode
@@ -35,22 +59,67 @@ At first, vim is a real painm especially coming from text editors that give you 
 	u	| undo last command
 	U	| undo line to its original state
 	CTRL+R  | to redo commands (undo the undo)
+	ce	| change until the end of a word
+	cw	| change until start of the next word
+	c$	| change until end of the line
+	rx	| replace a character at the cursor
+	y	| in visual mode, highlight text to be copied
+	x	| in visual mode, highlight text to be cut
+	p 	| paste copied, cut, or dd line
+	R	| replace multiple characters
 
 	### Deletion
 	Command | Description
 	---	| ---
-	x	| delete character
+	x	| delete character at the cursor
 	dw	| delete everything until start of next word excluding first character
 	de 	| delete everything until end of word including last character
 	d$	| delete everything to the end of the line including the last character
 	dd	| delete whole line
+	d2w	| delete words n number of times
 
 	* use `operation + movement` commands in combination for more efficiency such as `dw`
-	
-	
+	* use `operation + n + movement` to repeat the command n times
+
+	### External Commands
+	Command | Description
+	---	| ---
+	:!ls	| list files in current directory
+	:!file_name | copy current file contents into a new file named file_name	
+
+	* use `:! + shell command` to execute commands on files and directories as if you were in the shell
+	* use `v + motion + :w file_name` to save part of the current file into a new or existing file
 
 
+2. Download our basic vimrc and save it to ~/.vimrc.
+	- Some features of using Missing Semester's basic vimrc configuration include numbered lines, prevention of using arrow keys, and syntax highlighting
+
+3. Install and configure the plugin: [crtlp.vim](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md).
+	```
+	cd ~/.vim
+	git clone https://github.com/ctrlpvim/ctrlp.vim.git bundle/ctrlp.vim
+	```
+	In `.vimrc`:
+	```
+	let g:ctrlp_map = '<c-p>'
+	let g:ctrlp_cmd = 'CtrlP'
+	```
+
+4. To practice using Vim, re-do the Demo from the lecture on your own machine.
+	- Not going to go through this one as it would take a lot to explain each little thing I would need to do to fix the scrit. Instead, try it yourself and refer back to this page for the commands you can use: https://missing.csail.mit.edu/2020/editors/#demo
 
 
+5. Use Vim for all of your text editing for the next month.
+	- Done
 
+6. Configure your other tools to use Vim bindings
+	- I've installed the Chrome Vim exntension and I use it all the time. It is awesome: https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en
 
+7. Further customize your `.vimrc` file and install more plugins.
+	- These are the plugins I've installed and love using
+		- NERDtree: https://github.com/preservim/nerdtree/blob/master/README.markdown
+		- Lightline: https://github.com/itchyny/lightline.vim
+		- Auto-paits: https://github.com/jiangmiao/auto-pairs
+
+8. (Advanced) Convert XML to JSON using Vim macros. 
+	- I actually achieved this on my local machine, but have since forgotten the exact set of commands that I used. Basically, a macro in Vim is a repetition of a series of commands. For converting a file like this, it is a very mechanical process but well worth it once you figure it out as it will save you tons of time. 
