@@ -1,25 +1,25 @@
 ---
 title: Missing Semester - Lesson Three - Vim
 date: 2020-12-03
-tags: ["missing semester", "vim"]
+tags: ["missing semester", "Vim"]
 ---
 
-In the third lesson in the [missing semester](https://missing.csail.mit.edu/) series, we learn vim. Vim is a text editor that's based entirely in the command line. The point is to minimize as much typing as possible and not use the cursor. I have to say, so far this has been my favorite lesson not just because I really enjoyed the teacher and the lesson itself but also because I've found vim to be frustrating to learn at first but really productive and fun the better I've gotten.
+In the third lesson in the [missing semester](https://missing.csail.mit.edu/) series, we learn Vim. Vim is a text editor that's based entirely in the command line. The point is to minimize as much typing as possible and not use the mouse. I have to say, so far this has been my favorite lesson not just because I really enjoyed the teacher and the lesson itself but also because I've found Vim to be frustrating to learn at first but really productive and fun the better I've gotten.
 
-At first, vim is a real pain especially coming from editors that give you a lot out of the box. But I soon saw the advantage of not relying on the mouse and actually thinking about more efficient ways of getting my work done through a text based editor. I've also liked having the control to basically start from scratch and install plugins as I see fit rather than have things out of the box. I will still go back and use a different editor if I'm at work and I need to quickly get something done, but I'm finding myself using vim for almost all of my tasks and my goal is to use it entirely at some point.
+At first, Vim is a real pain especially coming from editors that give you a lot out of the box. But I soon saw the advantage of not relying on the mouse and actually thinking about more efficient ways of getting my work done through a text based editor. I've also liked having the control to basically start from scratch and install plugins as I see fit rather than have things out of the box. I will still go back and use a different editor if I'm at work and I need to quickly get something done, but I'm finding myself using Vim for almost all of my tasks and my goal is to use it entirely at some point.
 
 ### Challenges
 
-1. Complete `vimtutor`.
+1. Complete `Vimtutor`.
 
-	`vimtutor` is the beginner guide to vim. I found it really useful. There are seven lessons in total each with sub-lessons. They are pretty straight forward, so what I will do is give a summary of each lesson with the commands you learn. This can act as a sort of "cheat sheet" as well for when I need to recall how to do something.
+	`Vimtutor` is the beginner guide to Vim. I found it really useful. There are seven lessons in total each with sub-lessons. They are pretty straight forward, so what I will do is give a summary of each lesson with the commands you learn. This can act as a sort of "cheat sheet" as well for when I need to recall how to do something.
 
 	### Basic Commands
 	Command | Description
 	---	| ---
 	:w	| save changes to the fil
 	:q	| exit file
-	:help + command | comprehensive on-line help system for vim
+	:help + command | comprehensive on-line help system for Vim
 
 	### Cusor Movements
 	Command | Description
@@ -91,15 +91,15 @@ At first, vim is a real pain especially coming from editors that give you a lot 
 	* use `v + motion + :w file_name` to save part of the current file into a new or existing file
 
 
-2. Download our basic vimrc and save it to ~/.vimrc.
-	- Some features of using Missing Semester's basic vimrc configuration include numbered lines, prevention of using arrow keys, and syntax highlighting
+2. Download our basic Vimrc and save it to ~/.Vimrc.
+	- Some features of using Missing Semester's basic Vimrc configuration include numbered lines, prevention of using arrow keys, and syntax highlighting
 
-3. Install and configure the plugin: [crtlp.vim](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md).
+3. Install and configure the plugin: [crtlp.Vim](https://github.com/ctrlpVim/ctrlp.Vim/blob/master/readme.md).
 	```
-	cd ~/.vim
-	git clone https://github.com/ctrlpvim/ctrlp.vim.git bundle/ctrlp.vim
+	cd ~/.Vim
+	git clone https://github.com/ctrlpVim/ctrlp.Vim.git bundle/ctrlp.Vim
 	```
-	In `.vimrc`:
+	In `.Vimrc`:
 	```
 	let g:ctrlp_map = '<c-p>'
 	let g:ctrlp_cmd = 'CtrlP'
@@ -113,12 +113,12 @@ At first, vim is a real pain especially coming from editors that give you a lot 
 	- Done
 
 6. Configure your other tools to use Vim bindings
-	- I've installed the Chrome Vim exntension and I use it all the time. It is awesome: https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en
+	- I've installed the Chrome Vim exntension and I use it all the time. It is awesome: https://chrome.google.com/webstore/detail/Vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en
 
-7. Further customize your `.vimrc` file and install more plugins.
+7. Further customize your `.Vimrc` file and install more plugins.
 	- These are the plugins I've installed and love using
-		- NERDtree: https://github.com/preservim/nerdtree/blob/master/README.markdown
-		- Lightline: https://github.com/itchyny/lightline.vim
+		- NERDtree: https://github.com/preserVim/nerdtree/blob/master/README.markdown
+		- Lightline: https://github.com/itchyny/lightline.Vim
 		- Auto-paits: https://github.com/jiangmiao/auto-pairs
 
 8. (Advanced) Convert XML to JSON using Vim macros. 
