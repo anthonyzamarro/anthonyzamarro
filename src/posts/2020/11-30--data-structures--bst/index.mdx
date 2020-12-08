@@ -45,17 +45,44 @@ let Node = (data) => {
 let BinarySearchTree = () => {
 	this.root = null;
 
-	this.insert = (key, value) => {
-		if(!this.root) {
-			this.root = new Node(key, value);
-		} else if (key == this.root.key) {
-			this.root.value = value;
-		} else if (key < this.root.key) {
-			this.insert(this.root.left, value);
-		} else {
-			this.insert(this.root.right, value);
-		}
-	}
+
+	this.insert = (value) => {
+	let root = this.root;
+	    if(this.root == null)  {
+		this.root = new Node(value);
+	    } else {
+		    const insertNode = (node) => {  
+			    if(value < node.data) {      
+				    if(node.left == null) {
+					node.left = new Node(value);
+					return;
+				    } else {
+					return	insertNode(node.left);
+				    }
+			    } else if (value > node.data) {
+				    if (node.right == null) {
+					node.right = new Node(value);
+				    } else if (node.right !== null){
+					return	insertNode(node.right);
+				    }
+			    } else {
+				return null;
+			    }
+		    }
+		return insertNode(root);
+
+	    } 
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	this.delete = () => {
 
