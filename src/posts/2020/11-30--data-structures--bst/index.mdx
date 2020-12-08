@@ -10,7 +10,7 @@ tags: ['data structures', 'trees', 'binary search trees']
 Binary search trees are a linked data structure that consist of having a root node along with one or two child nodes. They are usually implemented using recursion and this can be powerful because using recursion can give us runtimes of O(log n)
  if we have a balanced tree. 
 
-Some key features of binary search trees:
+Some features of binary search trees:
 - data in a tree is called a node
 - a tree always has a root node and at most two child nodes
 - children of nodes are ordered from least to greatest as in a node's left child will be less than its parent node and a node's right child will be greater than its parent node
@@ -88,14 +88,15 @@ let BinarySearchTree = () => {
 
 	}
 
-	this.search = (key, node) => {
-		if(!node || node.key === key) return key;
+	this.search = (value) => {
+		let root = this.tree;
+		if(!node || root.data === value) return ;
 		
-		if(key < node.key) {
-			return this.search(key, node.left);
+		if(value < root.value){
+			return search(root.left);
 		}
-		if(key > node.key) {
-			return this.search(key, node.right);
+		if(value > root.value) {
+			return search(root.right);
 		}
 	}
 
