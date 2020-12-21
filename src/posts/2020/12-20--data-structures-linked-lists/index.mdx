@@ -1,0 +1,121 @@
+---
+title: Data Structures - Linked Lists
+date: 2020-12-20
+tags: ['data structures', 'linked lists']
+---
+
+
+A contiguous data structure where data is held in what are called nodes and each node points to the next node, thus linking the nodes together. The last node in a linked list, called the tail node, points to a null value. To get any value from a linked list we must start at the first node, called the head node, and go through each node until we get to the node we want. This means that the time complexity for searching in linked lists is generally O(n) because the time it takes to get to the desired node depends on the size of the list. However, the time complexity for insertion and deletion in a linked list is O(1) because we are always just appending to or deleting the first or last node of the list, so no matter the size of the list we always just go to either the head or tail (depending on your implementation).
+
+## Diagram of linked list
+	head node →  node A →  node B →  node C →  tail node → null
+
+## Use Cases
+This data structure can be used for when instant time access to elements is needed and  random access isn’t necessary. Some example use cases include:
+- Implementing stacks and queue data structures
+- The undo button of an application (like MS word)
+- The browser’s forward and backward button (doubly-linked list)
+- An image carousel (doubly-linked list)
+
+## Time Complexity
+operation \| |\| average |\| worst
+--- | --- | ---
+search  	| O(n) |	O(n) 
+insert          | O(n) |    	O(n) 
+traverse	| O(1) |	O(1)
+delete		| O(1) |	O(1)
+
+## Implementation
+```
+
+function LinkedList() {
+let length = 0;
+let head = null;
+	const Node = function(data) {
+		this.data = data;
+}
+
+this.search = (value) => {
+		// start at the head node. if head equals value, then return head
+		// if not, then loop through list and match until we find value
+		// if no value matches, then return 'item not found'
+		if(!head) {
+			return null;
+		} 
+		if(head.data == value) {
+			console.log(head)
+			return head;	
+		}
+		 else {
+			let current = head;
+			while(current) {
+				if(current.data == value) {
+					return current;
+				}
+			current = current.next;
+			}
+			return 'item not in list';
+		}
+
+	}
+
+
+this.insert = (data) => {
+		let node = new Node(data);
+		// if head is null, then list is empty
+		// set head to new node
+		if (head === null) {
+			head = node;
+		} else {
+			// otherwise, list is not empty
+			// so set currentNode to head to start traversing from the beginning
+			let currentNode = head;
+
+			// while currentNode.next is not null
+			// set currentNode = to the next currentNode
+			// when it's null, we've reached the end of the list
+			while(currentNode.next) {
+				currentNode = currentNode.next;
+			}
+			// after reaching the end of the list
+			// set currenNode.next equal to the new node we are adding
+			currentNode.next = node;
+		}
+		// console.log(head) // see the list
+		length++;
+	}
+
+this.delete = (data) => {
+		// to delete we need to start at the head, so we set currentNode to head
+		// and we also need to get the previous node, so set empty variable
+		let currentNode = head;
+		let prevNode;
+		// if currentNode data is equal to data we want to delete, then that means
+		// we want to delete the head node.
+		// so, we just set the head to the next node
+		if (currentNode.data === data) {
+			head = currentNode.next;
+		} else {
+			// otherwise, traverse through the list comparing currentNode data with the data we want to delete
+			// while they are not the same, set the previous node to the current and the currentNode to the next node.
+			// we are moving elements in the list so that after breaking out of the loop, the list is re-structured properly
+			while(currentNode.data !== data) {
+				prevNode = currentNode;
+				currentNode = currentNode.next;
+			}
+		}
+		// after traversing and finding the matching data to delete
+		// set previous node equal to the next node
+		prevNode.next = currentNode.next
+
+		// console.log(head) // see the list
+		length--;
+	}
+
+}
+
+```
+Resources
+https://stackoverflow.com/questions/393556/when-to-use-a-linked-list-over-an-array-array-list
+https://www.bigocheatsheet.com/
+https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571
