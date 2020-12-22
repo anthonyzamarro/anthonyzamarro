@@ -1,0 +1,71 @@
+---
+title: Data Structures - Queues
+data: 2020-12-21
+tags: ['data structures', 'queue']
+---
+
+
+Queues are a linked data structure that follows the first-in first-out (FIFO) principle. Conceptually, it is like a line in a grocery store. The first person in line is the first person to be checked out at the register. There are two primary methods of a queue: enqueue and dequeue. Enqueue is when you add an element to the queue and dequeue is when you remove an element. Since this data structure follows the FIFO principle, it allows for O(1) deletion and insertion because the operation always happens at the tail of the data structure. Access and search each take O(n) time because to get to an element depends on the length of the queue.
+
+## Diagram of queue
+	Head → A → B → C → Tail
+
+## Use cases
+We can use a queue for data that must be accessed sequentially and requires instant insert and delete time. A real world example would be the queue for your printer.
+
+
+## Time Complexity
+operation \| |\| average |\| worst
+--- | --- | ---
+search  	| O(n) |	O(n) 
+enqueue          | O(n) |    	O(n) 
+traverse	| O(1) |	O(1)
+dequeue		| O(1) |	O(1)
+
+
+
+```
+'use strict'
+
+class Node {
+	constructor() {                                                
+		this.data = [];
+	}
+}
+
+
+class Queue {
+	constructor(head = null) {
+		this.head = head;
+	}
+
+	enqueue(value) {
+		if (!this.head) {
+			 this.head = new Node();
+			 this.head.data.push(value);
+		} else {
+			this.head.data.push(value);
+		}
+	}
+
+	dequeue() {
+		if (this.head == null || this.head.data.length === 0) {
+			return 'Nothing in the queue';
+		}
+		this.head.data.shift();
+	}
+}
+
+
+let queue = new Queue();
+queue.enqueue('first');
+queue.enqueue('second');
+queue.enqueue('third');
+queue.dequeue();
+console.log(queue);
+
+
+
+```
+
+
