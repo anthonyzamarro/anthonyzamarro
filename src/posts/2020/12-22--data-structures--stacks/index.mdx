@@ -1,0 +1,79 @@
+---
+title: Data Structires - Stacks
+date: 2020-12-22
+tags: ['data structures', 'stacks']
+---
+
+Stacks are a linked data structure that uses the last-in first-out principle or LIFO. It is the opposite of a queue where the first item put on the stack is operated on. Like linked lists and queues, a stack’s insert and delete operation is O(1) because we are only performing these operations on the last item in the stack. Likewise, access and search at both O(n) as these are dependent on the size of the stack. The two primary methods of a stack are push and pop
+
+## Diagram of stack
+		A
+
+		↓
+
+		B
+
+		↓
+
+		C
+
+## Use cases
+Stacks are used for a variety of algorithms such as breadth-first search for backtracking. 
+
+
+## Time Complexity
+operation \| |\| average |\| worst
+--- | --- | ---
+peek    	| O(1) | O(1) 
+push  		| O(1) | O(1) 
+pop		| O(1) | O(1)
+
+## Implementation
+```
+class Node {
+	constructor() {
+		this.data = [];
+	}
+}
+
+class Stack {
+	constructor(head = null) {
+		this.head = head;
+	}
+
+	push(value) {
+		if(!this.head) {
+			this.head = new Node();
+			this.head.data.push(value);
+		} else {
+			this.head.data.push(value);
+		}
+	}
+
+	pop() {
+		if(!this.head) {
+			return 'there is no stack to delete';
+		} else {
+			this.head.data.pop();
+		}
+	}
+
+	peek() {
+		if (!this.head) {
+			return 'there is no stack';
+		} else {
+			return this.head.data[0];
+		}
+	}
+}
+
+let stack = new Stack();
+stack.push('first');
+stack.push('second');
+stack.push('third');
+stack.pop();
+console.log(stack.peek());
+
+```
+
+
