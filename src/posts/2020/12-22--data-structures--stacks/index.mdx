@@ -4,7 +4,9 @@ date: 2020-12-22
 tags: ['data structures', 'stacks']
 ---
 
-Stacks are a linked data structure that uses the last-in first-out principle or LIFO. It is the opposite of a queue where the first item put on the stack is operated on. Like linked lists and queues, a stack’s insert and delete operation is O(1) because we are only performing these operations on the last item in the stack. Likewise, access and search at both O(n) as these are dependent on the size of the stack. The two primary methods of a stack are push and pop
+Stacks are a linked data structure that uses the last-in first-out principle or LIFO. It is the opposite of a queue where the first item put on the stack is operated on. Like linked lists and queues, a stack’s insert and delete operation is O(1) because we are only performing these operations on the last item in the stack. Likewise, access and search at both O(n) as these are dependent on the size of the stack. The two primary methods of a stack are push and pop. 
+
+Since JS has native pop and push methods, I decided to implement this DS twice. One uses and array and the other uses an object. In all reality, I would never need to implement a stack in JS, but I think it's good practice to understand this DS.
 
 ## Diagram of stack
 		A
@@ -28,7 +30,7 @@ peek    	| O(1) | O(1)
 push  		| O(1) | O(1) 
 pop		| O(1) | O(1)
 
-## Implementation
+## Implementation with Object
 ```
 class Node {
 	constructor() {
@@ -75,5 +77,58 @@ stack.pop();
 console.log(stack.peek());
 
 ```
+
+
+## Implementation with Object
+```
+class NodeObject {
+	constructor() {
+		this.data = {};
+	}
+}
+
+class StackObject {
+	constructor() {
+		this.head = null;
+		this.count = 0;
+	}
+
+	push(value) {
+		if(!this.head) {
+			this.head = new NodeObject();
+			this.head.data[this.count] = value;
+			this.count++;
+			return;
+		}
+
+		this.head.data[this.count] = value;
+		this.count++;	
+	}
+
+	pop() {
+		if(!this.head) return 'there is no stack';
+		
+		this.count--;
+		delete this.head.data[this.count];
+	}
+
+	peek() {
+		if(!this.head) return 'there is no stack';
+
+		return this.head.data[this.count - 1];
+	}
+}
+
+
+let stackObject = new StackObject();
+stackObject.push('first');
+stackObject.push('second');
+stackObject.push('third');
+stackObject.pop();
+
+console.log(stackObject.peek());
+
+```
+
 
 
