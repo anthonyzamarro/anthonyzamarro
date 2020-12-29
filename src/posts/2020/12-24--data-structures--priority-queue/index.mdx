@@ -6,7 +6,90 @@ tags: ['data structures', 'priority queue', 'queue']
 
 The priority queue is another type of queue data structure but has more flexibility in terms of accessing its items. Items have a priority where high priority items are served before lower priority ones and if two items have the same priority they are served in the order in which they were enqueued. This DS supports the is_empty(), insert_with_priority() and pull_highest_priority_element() methods. Additional methods such as peek() can also be supported. Unlike queues or stacks which each serve elements by FIFO and LIFO operations, respectively, a priority queue serves elements with highest priority, so, generally speaking, the order of the queue does not matter as much. 
 
+### Use Cases
 
+### Implementation
+
+```
+class Node {
+	constructor(value, priority) {
+		return	{
+			"value" : value,
+			"priority":priority
+		}
+	}
+}
+
+class PriorityQueue {
+	constructor() {
+		this.queue = [];
+	}
+
+	insertWithPriority(value, priority) {
+		let list = this.queue;
+		let node = new Node(value, priority);
+
+		if (priority < 0) {
+			console.log('only positive integers allowed');
+			return null;
+		}
+
+		if(this.isEmpty()) {
+			list.push(node);	
+		} else {
+			let highest = list[list.length - 1];
+			if (highest.priority < node.priority) {
+				list.push(node);
+			} else {
+				list.unshift(node);
+			}
+//			for(let i = 0; i < list.length; i++) {		
+//				if(list[i].priority < node.priority) {
+//					list.push(node);
+//					return list;
+//				} else {
+//					list.unshift(node);
+//					return list;
+//				}
+//			}
+        	}
+
+
+
+	}
+
+	pullHighestPriorityItem() {
+	// pop to get the highest priority item
+	// move next highest priority item to the top
+		if (this.isEmpty()) return null;  
+		let list = this.queue;
+		return list.sort((a,b) => a.priority - b.priority).pop();
+	}
+
+	isEmpty() {
+		if (this.queue.length === 0) return true;
+		return false;	
+	}
+
+	peek() {
+		return this.queue[this.queue.length - 1];		
+	}
+}
+
+
+const p = new PriorityQueue();
+p.insertWithPriority('A', 3);
+p.insertWithPriority('B', 1);
+p.insertWithPriority('C', 0);
+p.insertWithPriority('G', -1);
+p.insertWithPriority('D', 5);
+p.insertWithPriority('E', 2);
+p.insertWithPriority('F', 4);
+p.insertWithPriority('G', 6);
+p.insertWithPriority('H', 9);
+p.insertWithPriority('I', 7);
+console.log(p);
+```
 ### Resources
 https://en.wikipedia.org/wiki/Priority_queue
 
