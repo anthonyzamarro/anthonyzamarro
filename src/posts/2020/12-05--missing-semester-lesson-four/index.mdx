@@ -13,3 +13,16 @@ In this fourth lesson of the [missing semester](https://missing.csail.mit.edu/20
 
 2. Find the number of words (in `/usr/share/dict/words`) that contain at least three `a`s and don't have a `'s` ending. What are the three most common last two letters of those words? `sed`'s `y` command, or the `tr` program, may help you with case insensitivity. How many of those two-letter combinations are there? And for a challenge: which combinations do not occur?
  
+Answer:
+	First, I used a regular expression with `grep` to find all words with at least three `a` characters not ending in `s` and passed those to a new file.
+
+	`grep -E -i '(.*[a]){3}.*[^s]$' words > ~/Desktop/projects/Courses/missing_semester/question_2.txt`
+
+	The next part I found to be tricky, but it was ultimately my lack of regular expression knowledge that led me down a rabbit hole. I ended up simply using `sed` with a regular expression pattern to get the last two letters of each word in the file, then proceeded to pipe that through `sort` and `uniq` commands:
+
+	'cat question_2.txt | sed -E 's/.*(..)/\1/' | sort | uniq -c | sort -nk1,1'
+
+	Finally, to get the number of times the two-letter combinations occur, I did this:
+	
+	'cat question_2.txt | sed -E 's/.*(..)/\1/' | uniq | wc -l`
+
