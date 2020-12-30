@@ -26,3 +26,12 @@ Answer:
 	
 	'cat question_2.txt | sed -E 's/.*(..)/\1/' | uniq | wc -l`
 
+3. Why is it a bad idea to use in-place substitution using `sed` like so? 'sed s/REGEX/SUBSTITUTION/ input.txt > input.txt' Is this particular to `sed`? Use `man sed` to find out how to accomplish this.
+
+Answer:
+	We can achieve in-place substitution in a file with `sed` by doing `sed -i '' -e 's/foo/bar/g' test.txt'`. This is better because we only replace what we want rather than overwrite the entire file. This is not particular to `sed` because you rarely want to overwrite an entire file when all your really need to do is replace specific things in the file.
+
+4. Find your average, median, and max system boot time over the last ten boots. Use `journalctl` on Linux and `log show` on MacOS, and look for log timestamps near the beginning and end of each boot.
+
+Answer: 
+
