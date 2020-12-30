@@ -14,22 +14,23 @@ In this fourth lesson of the [missing semester](https://missing.csail.mit.edu/20
 2. Find the number of words (in `/usr/share/dict/words`) that contain at least three `a`s and don't have a `'s` ending. What are the three most common last two letters of those words? `sed`'s `y` command, or the `tr` program, may help you with case insensitivity. How many of those two-letter combinations are there? And for a challenge: which combinations do not occur?
  
 Answer:
-	First, I used a regular expression with `grep` to find all words with at least three `a` characters not ending in `s` and passed those to a new file.
+First, I used a regular expression with `grep` to find all words with at least three `a` characters not ending in `s` and passed those to a new file.
 
 	`grep -E -i '(.*[a]){3}.*[^s]$' words > ~/Desktop/projects/Courses/missing_semester/question_2.txt`
 
-	The next part I found to be tricky, but it was ultimately my lack of regular expression knowledge that led me down a rabbit hole. I ended up simply using `sed` with a regular expression pattern to get the last two letters of each word in the file, then proceeded to pipe that through `sort` and `uniq` commands:
+The next part I found to be tricky, but it was ultimately my lack of regular expression knowledge that led me down a rabbit hole. I ended up simply using `sed` with a regular expression pattern to get the last two letters of each word in the file, then proceeded to pipe that through `sort` and `uniq` commands:
 
 	'cat question_2.txt | sed -E 's/.*(..)/\1/' | sort | uniq -c | sort -nk1,1'
 
-	Finally, to get the number of times the two-letter combinations occur, I did this:
-	
+Finally, to get the number of times the two-letter combinations occur, I did this:
+
 	'cat question_2.txt | sed -E 's/.*(..)/\1/' | uniq | wc -l`
 
 3. Why is it a bad idea to use in-place substitution using `sed` like so? 'sed s/REGEX/SUBSTITUTION/ input.txt > input.txt' Is this particular to `sed`? Use `man sed` to find out how to accomplish this.
 
 Answer:
-	We can achieve in-place substitution in a file with `sed` by doing `sed -i '' -e 's/foo/bar/g' test.txt'`. This is better because we only replace what we want rather than overwrite the entire file. This is not particular to `sed` because you rarely want to overwrite an entire file when all your really need to do is replace specific things in the file.
+
+We can achieve in-place substitution in a file with `sed` by doing `sed -i '' -e 's/foo/bar/g' test.txt'`. This is better because we only replace what we want rather than overwrite the entire file. This is not particular to `sed` because you rarely want to overwrite an entire file when all your really need to do is replace specific things in the file.
 
 4. Find your average, median, and max system boot time over the last ten boots. Use `journalctl` on Linux and `log show` on MacOS, and look for log timestamps near the beginning and end of each boot.
 
