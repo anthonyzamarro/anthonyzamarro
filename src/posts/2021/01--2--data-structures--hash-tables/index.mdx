@@ -6,6 +6,7 @@ tags: ['data structures', 'hash table']
 
 ## Overview
 A hash table maps keys to values. To store our mapped keys and values, we use an array and a hash function. The hash function returns the index where our data is stored. An issue that can arise with hash tables is if we store our data at the same index. One way to solve this is to basically use a linked list at that index so that we can store multiple data at one index. This would be called collision. One way to compute the index for our data is to somehow create a long integer, such as the ASCII codes of string characters (if our data is a string), divide that number by the size of the number of available addresses, and take the remainder.
+Hash tables have a good time complexity because in the worst case we go through the entire array to perform the operation, but since our hash function provides us the index of where our data lives, the operations then are instantaneous or O(n) because we know exactly where the data is from the index given.
 
 
 ## Diagram
