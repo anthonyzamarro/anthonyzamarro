@@ -1,0 +1,71 @@
+---
+title: Data Structures - Hash Tables
+date: 2020-01-02
+tags: ['data structures', 'hash table']
+---
+
+## Overview
+A hash table maps keys to values. To store our mapped keys and values, we use an array and a hash function. The hash function returns the index where our data is stored. An issue that can arise with hash tables is if we store our data at the same index. One way to solve this is to basically use a linked list at that index so that we can store multiple data at one index. This would be called collision. One way to compute the index for our data is to somehow create a long integer, such as the ASCII codes of string characters (if our data is a string), divide that number by the size of the number of available addresses, and take the remainder.
+
+
+## Diagram
+[
+	key -> value: data,
+	key -> value: data,
+	key -> value data -> data -> data,
+	key -> value
+]
+
+## Use Cases
+Some use cases for hash tables include:
+- caching
+- database indexing
+- object representation
+- associative arrays
+
+## Time Complexity
+operation \| |\| average |\| worst
+--- | --- | ---
+search		| O(n) | O(n) 
+insert		| O(n) | O(n)
+delete		| O(n) | O(n)
+
+## Implementation
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+## Resources
+https://www.youtube.com/watch?v=MfhjkfocRR0
+https://www.youtube.com/watch?v=KyUTuwz_b7Q
+https://en.wikipedia.org/wiki/Hash_table
