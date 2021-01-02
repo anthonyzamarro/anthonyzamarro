@@ -4,9 +4,26 @@ date: 2020-12-24
 tags: ['data structures', 'priority queue', 'queue']
 ---
 
+### Overview
 The priority queue is another type of queue data structure but has more flexibility in terms of accessing its items. Items have a priority where high priority items are served before lower priority ones and if two items have the same priority they are served in the order in which they were enqueued. This DS supports the is_empty(), insert_with_priority() and pull_highest_priority_element() methods. Additional methods such as peek() can also be supported. Unlike queues or stacks which each serve elements by FIFO and LIFO operations, respectively, a priority queue serves elements with highest priority, so, generally speaking, the order of the queue does not matter as much. 
 
+### Diagram of priority queue
+```
+{ A: data,
+  P: priority },
+{ B: data,
+  P: priority },
+{ C: data,
+  P: priority },
+```
+I think using objects makes sense in this case for priority queues because you need to store two values, one being the actual data and the other being the priority value.
+
+
 ### Use Cases
+We use priority queues for things need a priority such as scheduling. Some use cases include:
+- heap data structures
+- in scheduling applications in an operating system
+- "trending topics" algorithms in social media sites such as Twitter
 
 ### Implementation
 
@@ -92,4 +109,14 @@ console.log(p);
 ```
 ### Resources
 https://en.wikipedia.org/wiki/Priority_queue
+https://www.oodlestechnologies.com/blogs/Understanding-Priority-Queues-and-Their-Use-Cases/	
 
+	
+
+	
+
+	
+
+	
+	
+	
